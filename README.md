@@ -1,9 +1,9 @@
 # RP2040-Zero-liquid-temperature-sensor
 Simple program and PS script to allow monitoring of liquid temps in liquid cooling PCs
-
+3D-Printed case: https://www.printables.com/model/1535043-rp2040-zero-2-pin-temperature-sensor-case
 ## Usage
 
-1. Make sure that your liquid cooling loop has a temp probe installed. For my project I used this [Phobya G1/4" Inline Temperature Sensor](https://www.amazon.com/,Phobya-Inline-Temperature-Sensor-Nickel/dp/B00414VYEC), but any will be fine.
+1. Make sure that your liquid cooling loop has a temp probe installed. For my project I used this [Phobya Single Temperature Sensor](https://www.aquatuning.com/wasserkuehlung/custom-wasserkuehlung/ueberwachung/thermosensor/sen-phobya-thermosensor-einzeln-50cm-schwarz-gesleevt), but any will be fine.
 
 2. Buy yourself a [RP2040 Zero](https://www.adafruit.com/product/3500). This is a board I used, but feel free to use a different one and change the code as needed. **RP2040 Zero** is very cool as it can natively output serial data via USB, and it can be seen in Windows as COM device.
 
