@@ -1,32 +1,20 @@
-# Trinket-M0-liquid-temperature-sensor
+# RP2040-Zero-liquid-temperature-sensor
 Simple program and PS script to allow monitoring of liquid temps in liquid cooling PCs
 
 ## Usage
 
 1. Make sure that your liquid cooling loop has a temp probe installed. For my project I used this [Phobya G1/4" Inline Temperature Sensor](https://www.amazon.com/,Phobya-Inline-Temperature-Sensor-Nickel/dp/B00414VYEC), but any will be fine.
 
-2. Buy yourself a [Trinket M0](https://www.adafruit.com/product/3500). This is a board I used, but feel free to use a different one and change the code as needed. **Trinket M0** is very cool as it can natively output serial data via USB, and it can be seen in Windows as COM device. It also has RGB diode which is useful to have some indication of liquid temperature without need to access data in OS.
+2. Buy yourself a [RP2040 Zero](https://www.adafruit.com/product/3500). This is a board I used, but feel free to use a different one and change the code as needed. **RP2040 Zero** is very cool as it can natively output serial data via USB, and it can be seen in Windows as COM device.
 
-3. Solder some goldpins to your **Trinket M0** - pin **A4** will be used as analog input, which is conveniant as **GND** is right next to it. (check `Troubleshooting for additional solder points you may have to add)  
+3. Solder/Connect a 10k Ohm resistor between pin **GPIO26** and **3.3V** and your thermal sensor to **GPIO26** and **GND**.
+![IMG_0486_preview](https://github.com/user-attachments/assets/95b9640a-4baf-4881-8fc1-284d32e93717)
 
-4. Flash [trinket_m0_temp_sensor.ino](src/trinket_m0_temp_sensor.ino) into your board.
+4. Flash [rp2040_temp_sensor.ino](src/rp2040_temp_sensor.ino) into your board.
 
 5. Connect temp probe from your liquid cooling loop into your board. You remembered to add it to your loop, right? :)
 
-6. Power your **Trinket M0** with usb from your PC. It should immediately display colors that indicate temperature:
-
-| Avg. Color | Temp range C | Description  |
-| ---------- | ------------ | ------------ |
-| Blue       | 0 - 24       | Ambient      |
-| Green      | 25 - 32      | Idle         | 
-| Yellow     | 33 - 37      | Light load   |
-| Orange     | 38 - 53      | Regular load |
-| Red        | 54 - 59      | Overheat     |
-| Hot Pink   | > 60         | Danger!      |
-
-Keep in mind that colors will tend to shift from blue -> green -> yellow -> red smoothly, so it's best to expect soe color range as indication of actual temperature.
-
-## Reading the output from the **Trinket M0**
+## Reading the output from the **RP2040 Zero**
 You can use the tool [PuTTY]([www.putty.org](https://www.chiark.greenend.org.uk/~sgtatham/putty/) to read the output. On PuTTY, switch the connection type to `Serial`, set the `Serial Line` to your COM port (COM3, for instance), and verify that the speed is `9600`.  
 When you click open, it should be reading out values.
 
@@ -42,8 +30,4 @@ When you click open, it should be reading out values.
 1. I use tool called [Fan Control](https://github.com/Rem0o/FanControl.Releases). Download latest plugin DLL from [Releases](https://github.com/Naata/Trinket-M0-liquid-temperature-sensor/releases). Use instructions from [FanControl Wiki](https://github.com/Rem0o/FanControl.Releases/wiki/Plugins#requirements).
 2. Set environment variable SENSOR_COM_PORT to whichever com port your trinket is connected to
 2. Works! :)
-
-## Troubleshooting
-If you have flucuating values coming from the probe, you will need to solder a 10K resistor between the **3V** and **A4**.  
-If you don't have one of that resistance, you can get once close to that. Just make sure to update the `SERIESRESISTOR` in the .ino file to the correct resistance.
 
